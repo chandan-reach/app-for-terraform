@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Stack User Registration</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef2ff;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px #0001;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1e293b;
+        }
+
+        p {
+            color: #64748b;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 18px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            margin-top: 25px;
+            background: #4f46e5;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #3730a3;
+        }
+
+        .success {
+            background: #dcfce7;
+            border: 1px solid #86efac;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .success h2 {
+            color: #166534;
+        }
+
+        .success p {
+            text-align: left;
+            color: #166534;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #4f46e5;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <% if (typeof result === 'undefined') { %>
+
+            <h1>User Registration</h1>
+            <p>Enter your details to connect with our backend.</p>
+
+            <form action="/submit" method="POST">
+
+                <label>Full Name</label>
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Enter your name"
+                    required
+                >
+
+                <label>Email Address</label>
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+                <label>Department</label>
+                <select name="department" required>
+                    <option value="">Select Department</option>
+                    <option value="CSE">Computer Science</option>
+                    <option value="IT">Information Technology</option>
+                    <option value="ECE">Electronics</option>
+                    <option value="ME">Mechanical</option>
+                </select>
+
+                <button type="submit">Register User</button>
+
+            </form>
+
+        <% } else { %>
+
+            <div class="success">
+
+                <h2>Backend Response</h2>
+
+                <p><strong>Message:</strong> <%= result.message %></p>
+
+                <p><strong>Status:</strong> Request Successful</p>
+
+            </div>
+
+            <a href="/">Register Another User</a>
+
+        <% } %>
+
+    </div>
+
+</body>
+</html>
